@@ -12,6 +12,7 @@ export interface GuestInvite {
   id: string;
   eventId: string;
   guestCategoryId: string;
+  title: string;
   name: string;
   email: string;
   phone: string;

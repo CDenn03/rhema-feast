@@ -146,7 +146,7 @@ export function GuestsPageClient({ eventId, eventName, invites, categories, gues
         )}
       </SectionSurface>
 
-      <CreateInviteDialog open={showCreate} onOpenChange={setShowCreate} categories={categories} />
+      <CreateInviteDialog eventId={eventId} open={showCreate} onOpenChange={setShowCreate} categories={categories} />
       <ViewInviteDialog invite={showView} open={!!showView} onOpenChange={(o) => { if (!o) setShowView(null); }} />
       <CategoriesDialog open={showCategories} onOpenChange={setShowCategories} categories={categories} />
     </div>
