@@ -1,5 +1,3 @@
-import { Button } from '@/components/ui/button'
-
 export function AboutSection() {
   return (
     <section id="about" className="bg-background py-24 sm:py-32">
@@ -18,28 +16,22 @@ export function AboutSection() {
               About
             </h2>
             <p className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              A Divine Encounter Awaits
+              What is Rhema Feast?
+            </p>
+            <p className="mt-2 text-base font-medium text-[var(--brand-gold)]">
+              A Move of God, Not Just a Gathering
             </p>
             <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-              Rhema Feast is an annual gathering that brings together believers,
-              entrepreneurs, creatives, and leaders from around the world for
-              five days of transformative worship, the Word, and practical
-              wisdom. Our mission is to equip and empower God&apos;s people to
-              walk in their full destiny.
+              Rhema Feast (RF) is an Apostolic movement whose mission is to
+              share the unadulterated and authentic word of God to the nations
+              and to all generations by releasing consistent value through
+              in-person meetings, social media, and broadcasting media, for the
+              Glory of Yahweh, and the advancement of His Kingdom.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              This year&apos;s theme, &ldquo;Unveiling His Glory,&rdquo; invites
-              you into a deeper revelation of who God is and who He has called
-              you to be. Through dynamic worship, prophetic teaching, business
-              forums, and community outreach, Rhema Feast 2026 promises to be a
-              landmark event.
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Host church: Ruach Assembly (formerly The Purpose Centre Church)
+              led by Reverend Julian Kyula.
             </p>
-            <Button
-              render={<a href="#register" />}
-              className="mt-8 bg-[var(--brand-gold)] text-[var(--brand-dark)] hover:bg-[var(--brand-gold)]/90"
-            >
-              Get Your Tickets
-            </Button>
           </div>
         </div>
       </div>

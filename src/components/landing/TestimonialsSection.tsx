@@ -1,21 +1,15 @@
 const testimonials = [
   {
     quote:
-      'Rhema Feast completely transformed my walk with God. The worship was heaven-sent, and the teachings gave me practical tools for my business and family.',
-    author: 'Michael T.',
-    role: 'Entrepreneur, Ghana',
+      'It is an opportune window where those with eyes to see and the discernment to perceive can apprehend the intangible: graces, mantles, and above all, God Himself.',
+    author: 'Apostle Jonathan Male',
+    role: 'Kampala, Uganda',
   },
   {
     quote:
-      'I came broken and left restored. The atmosphere of God\'s presence at Rhema Feast is like nothing I\'ve ever experienced. I will never be the same.',
-    author: 'Grace A.',
-    role: 'Worship Leader, Nigeria',
-  },
-  {
-    quote:
-      'The Business Forum alone was worth the trip. I learned kingdom principles that completely shifted how I approach my work. See you in 2026!',
-    author: 'David K.',
-    role: 'Tech Founder, Kenya',
+      'So impactful. Different graces yet so in sync. Jesus was revealed. Looking forward to the continuous execution of this move.',
+    author: 'Timam',
+    role: 'Hip-Hop Minister, Nairobi, Kenya',
   },
 ]
 

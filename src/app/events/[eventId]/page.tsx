@@ -8,11 +8,11 @@ import { getMockTicketTypes, getMockTickets } from "@/features/ticketing/mock";
 import { getMockOrders } from "@/features/orders/mock";
 import { getMockZones } from "@/features/zones/mock";
 import { getMockCampaigns } from "@/features/communications/mock";
-import { getMockEventMetrics } from "@/features/reports/mock";
+import { getMockSubEventMetrics } from "@/features/reports/mock";
 import {
   CalendarDays, MapPin, Users, Clock, BarChart3, Handshake,
   Music, UserCheck, Building2, Gift, BookOpen, Ticket,
-  ShoppingBag, MessageSquare, Grid3x3, ChevronRight, ArrowRight,
+  ShoppingBag, MessageSquare, Grid3x3, ChevronRight, ArrowRight, Layers,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -249,8 +249,6 @@ async function DashboardEventDetailPage({ params }: Props) {
   const orders = getMockOrders(eventId);
   const zones = getMockZones(eventId);
   const campaigns = getMockCampaigns();
-  const metrics = getMockEventMetrics(eventId);
-
   return (
     <div className="space-y-8">
       <PageHeader
@@ -258,7 +256,10 @@ async function DashboardEventDetailPage({ params }: Props) {
         description="Event overview and management"
         breadcrumbs={[
           { label: "Dashboard", href: "/" },
-          { label: "Events", href: "/events" },
+          { label: "Events", href: "/admin/events" },
+          ...(event.seriesId
+            ? [{ label: event.seriesTitle, href: `/admin/events/${event.seriesId}` as const }
+            ] : []),
           { label: event.title },
         ]}
       />
@@ -267,6 +268,73 @@ async function DashboardEventDetailPage({ params }: Props) {
         {/* Left Column */}
         <div className="space-y-8">
           <HeroSection title={event.title} eventId={event.id} status={event.status} />
+
+          {event.subEvents && event.subEvents.length > 0 && (
+            <SectionSurface>
+              <h2 className="mb-4 flex items-center gap-2 text-xl font-bold tracking-tight">
+                <Layers className="h-5 w-5 text-accent-gold" />
+                Sub-Events
+              </h2>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {event.subEvents.map((sub) => {
+                  const subMetrics = getMockSubEventMetrics(sub.id);
+                  return (
+                    <Link
+                      key={sub.id}
+                      href={`/events/${event.id}/subevents/${sub.id}`}
+                      className="flex flex-col gap-3 rounded-2xl border bg-card p-4 transition-all hover:shadow-sm"
+                    >
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="flex items-center gap-1.5">
+                          <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-gold/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent-gold">
+                            {sub.type}
+                          </span>
+                          {sub.isPaid && (
+                            <span className="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-green-600 dark:text-green-400">
+                              Paid
+                            </span>
+                          )}
+                          {!sub.isPaid && sub.requiresTicket && (
+                            <span className="inline-flex items-center gap-1 rounded-full bg-blue-500/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                              Ticket
+                            </span>
+                          )}
+                          {!sub.isPaid && !sub.requiresTicket && (
+                            <span className="inline-flex items-center gap-1 rounded-full bg-muted px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                              Open
+                            </span>
+                          )}
+                        </div>
+                        {sub.isPaid && (
+                          <span className="text-sm font-semibold text-accent-gold">
+                            KES {sub.price.toLocaleString()}
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="font-semibold leading-snug">{sub.title}</h3>
+                      <p className="line-clamp-2 text-xs text-muted-foreground">
+                        {sub.description}
+                      </p>
+                      <div className="mt-auto grid grid-cols-3 gap-2 text-xs text-muted-foreground">
+                        <span className="inline-flex items-center gap-1">
+                          <CalendarDays className="h-3 w-3" />
+                          {new Date(sub.startDate).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                        </span>
+                        <span className="inline-flex items-center gap-1">
+                          <Users className="h-3 w-3" />
+                          {sub.capacity.toLocaleString()}
+                        </span>
+                        <span className="inline-flex items-center gap-1">
+                          <UserCheck className="h-3 w-3" />
+                          {subMetrics.checkedIn} checked in
+                        </span>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </SectionSurface>
+          )}
 
           <SectionSurface>
             <h2 className="mb-4 text-xl font-bold tracking-tight">Event Summary</h2>
@@ -369,12 +437,12 @@ async function DashboardEventDetailPage({ params }: Props) {
         <div className="space-y-8">
 
           <SectionSurface>
-            <h2 className="mb-4 text-xl font-bold tracking-tight">Event Statistics</h2>
+            <h2 className="mb-4 text-xl font-bold tracking-tight">Edition Overview</h2>
             <div className="space-y-3">
-              <StatCard icon={<BarChart3 className="h-5 w-5" />} label="Total Capacity" value={event.capacity.toLocaleString()} />
-              <StatCard icon={<Users className="h-5 w-5" />} label="Agenda Sessions" value={agenda.length.toString()} />
-              <StatCard icon={<Ticket className="h-5 w-5" />} label="Tickets Sold" value={metrics.ticketsSold.toLocaleString()} />
+              <StatCard icon={<Layers className="h-5 w-5" />} label="Sub-Events" value={(event.subEvents?.length ?? 0).toString()} />
+              <StatCard icon={<BarChart3 className="h-5 w-5" />} label="Capacity" value={event.capacity.toLocaleString()} />
               <StatCard icon={<CalendarDays className="h-5 w-5" />} label="Duration" value={`${Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1} days`} />
+              <StatCard icon={<Handshake className="h-5 w-5" />} label="Partners" value={partners.length.toString()} />
             </div>
           </SectionSurface>
 

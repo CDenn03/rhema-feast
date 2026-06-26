@@ -15,7 +15,7 @@ interface Props {
   className?: string;
 }
 
-export function PageHeader({ title, description, actions, breadcrumbs, className }: Props) {
+export function PageHeader({ title, description, actions, breadcrumbs, className }: Readonly<Props>) {
   return (
     <div className={cn("space-y-4", className)}>
       {breadcrumbs && breadcrumbs.length > 0 && (
@@ -40,7 +40,6 @@ export function PageHeader({ title, description, actions, breadcrumbs, className
       <div className="flex items-start justify-between gap-6">
         <div className="space-y-2">
           <div className="flex items-start gap-4">
-            <div className="mt-1.5 h-8 w-1 shrink-0 rounded-full bg-accent-gold" />
             <div>
               <h1 className="text-4xl font-bold tracking-tight">{title}</h1>
               {description && (

@@ -4,28 +4,31 @@ const footerLinks = [
   {
     title: 'Quick Links',
     links: [
-      { label: 'About', href: '#about' },
+      { label: 'Home', href: '#hero' },
+      { label: 'About Us', href: '#about' },
       { label: 'Pillars', href: '#pillars' },
+      { label: 'Business Forum', href: '#business-forum' },
       { label: 'Speakers', href: '#speakers' },
       { label: 'FAQ', href: '#faq' },
     ],
   },
   {
-    title: 'Connect',
+    title: 'Get Involved',
     links: [
-      { label: 'Facebook', href: '#' },
-      { label: 'Instagram', href: '#' },
-      { label: 'YouTube', href: '#' },
-      { label: 'Email Us', href: 'mailto:info@rhemafeast.org' },
+      { label: 'Register Online', href: '/events' },
+      { label: 'Become a Partner', href: '/partner/register' },
+      { label: 'Vendor Registration', href: '/vendor/register' },
+      { label: 'Share Testimony', href: '/testify' },
+      { label: 'Give', href: '/give' },
     ],
   },
   {
-    title: 'Support',
+    title: 'Connect',
     links: [
-      { label: 'Partner With Us', href: '#' },
-      { label: 'Volunteer', href: '#' },
-      { label: 'Prayer Requests', href: '#' },
-      { label: 'Contact', href: '#' },
+      { label: 'Facebook', href: 'https://facebook.com/RuachAssemblies' },
+      { label: 'Twitter', href: 'https://twitter.com/pcchurchnbi' },
+      { label: 'Instagram', href: 'https://instagram.com/Ruachassemblies' },
+      { label: 'Email Us', href: 'mailto:testimony@ruachassembly.org' },
     ],
   },
 ]
@@ -49,9 +52,24 @@ export function Footer() {
               </span>
             </a>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              An annual gathering of faith, business, worship, and community —
-              equipping God&apos;s people for their divine purpose.
+              An Apostolic movement sharing the unadulterated and authentic word
+              of God to the nations and to all generations.
             </p>
+            <p className="mt-3 text-xs text-muted-foreground">
+              Ruach Assemblies / Purpose Centre Church
+            </p>
+            <div className="mt-4 rounded-xl border border-[var(--brand-border)] bg-card p-4">
+              <p className="text-xs font-semibold uppercase tracking-wider text-[var(--brand-gold)]">
+                Give via M-Pesa
+              </p>
+              <p className="mt-1 text-sm font-bold text-foreground">Paybill: 4075905</p>
+              <p className="mt-0.5 text-xs text-muted-foreground">
+                Account: Tithe, Offering, First Fruit, or Partnership
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Or text &ldquo;Partner&rdquo; to 22799
+              </p>
+            </div>
           </div>
 
           {footerLinks.map((group) => (
@@ -76,7 +94,8 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t border-[var(--brand-border)] pt-8 text-center text-xs text-muted-foreground">
-          &copy; {new Date().getFullYear()} Rhema Feast. All rights reserved.
+          &copy; {new Date().getFullYear()} Rhema Feast. All Rights Reserved.
+          &middot; Ruach Assemblies / Purpose Centre Church
         </div>
       </div>
     </footer>

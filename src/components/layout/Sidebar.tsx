@@ -23,10 +23,6 @@ import {
   UserPlus,
   ChevronRight,
   LogOut,
-  Globe,
-  Home,
-  Gift,
-  Star,
   ScanLine,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -51,25 +47,19 @@ const iconMap: Record<string, React.ReactNode> = {
   Reports: <BarChart3 className="h-4 w-4" />,
   Guests: <UserPlus className="h-4 w-4" />,
   "Entry Logs": <ScanLine className="h-4 w-4" />,
-  Home: <Home className="h-4 w-4" />,
-  Give: <Gift className="h-4 w-4" />,
-  Testimonials: <Star className="h-4 w-4" />,
 };
 
 const GLOBAL_ITEMS = [
   { label: "Dashboard", href: "/admin", iconKey: "Dashboard" },
   { label: "Events", href: "/admin/events", iconKey: "Events" },
-  { label: "POS", href: "/admin/pos", iconKey: "POS" },
+  { label: "Partners", href: "/admin/partners", iconKey: "Partners" },
   { label: "Merch", href: "/admin/merch/inventory", iconKey: "Merch" },
-  { label: "Settings", href: "/admin/settings", iconKey: "Admin Settings" },
+  // { label: "Settings", href: "/admin/settings", iconKey: "Admin Settings" },
 ];
 
-const PUBLIC_ITEMS = [
-  { label: "Home", href: "/", iconKey: "Home" },
-  { label: "Events", href: "/events", iconKey: "Events" },
-  { label: "Partners", href: "/partners", iconKey: "Partners" },
-  { label: "Testimonials", href: "/testimonials", iconKey: "Testimonials" },
-  { label: "Give", href: "/give", iconKey: "Give" },
+const STAFF_ITEMS = [
+  { label: "POS", href: "/admin/pos", iconKey: "POS" },
+  { label: "Check-in", href: "/admin/checkin", iconKey: "Check-in" },
 ];
 
 const EVENT_ITEMS = [
@@ -103,6 +93,7 @@ function NavItem({
       href={href}
       className={cn(
         "group relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-all duration-200",
+        "active:scale-[0.98]",
 
         isActive
           ? [
@@ -116,6 +107,7 @@ function NavItem({
               "text-sidebar-foreground/75",
               "hover:bg-sidebar-accent",
               "hover:text-sidebar-foreground",
+              "active:bg-sidebar-accent/80",
             ]
       )}
     >
@@ -200,32 +192,59 @@ function SectionLabel({
 
 function EventList() {
   const pathname = usePathname();
-  const { events, loaded, fetchEvents } = useEventsStore();
+  const { series, editions, loaded, fetchEvents } = useEventsStore();
 
   useEffect(() => {
     fetchEvents();
   }, [fetchEvents]);
 
-  if (events.length === 0) return null;
+  if (series.length === 0) return null;
 
   return (
-    <div className="space-y-2">
-      <SectionLabel>My Events</SectionLabel>
-      <div className="space-y-0.5">
-        {events.map((event) => {
-          const href = `/events/${event.id}`;
-          const isActive = pathname === href || pathname.startsWith(href + "/");
-          return (
+    <div className="space-y-3">
+      <SectionLabel>My Series</SectionLabel>
+      {series.map((ser) => {
+        const seriesHref = `/admin/events/${ser.id}`;
+        const isSeriesActive = pathname === seriesHref || pathname.startsWith(seriesHref + "/");
+        const seriesEditions = editions.filter((e) => e.seriesId === ser.id);
+
+        return (
+          <div key={ser.id} className="space-y-0.5">
             <NavItem
-              key={event.id}
-              href={href}
-              label={event.title}
+              href={seriesHref}
+              label={ser.title}
               icon={iconMap.Events}
-              isActive={isActive}
+              isActive={isSeriesActive && seriesEditions.length === 0}
             />
-          );
-        })}
-      </div>
+            {seriesEditions.length > 0 && (
+              <div className="ml-3 space-y-0.5 border-l border-sidebar-border/50 pl-2">
+                {seriesEditions.map((ed) => {
+                  const href = `/events/${ed.id}`;
+                  const isActive = pathname === href || pathname.startsWith(href + "/");
+                  return (
+                    <Link
+                      key={ed.id}
+                      href={href}
+                      className={cn(
+                        "group relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all duration-200",
+                        "active:scale-[0.98]",
+                        isActive
+                          ? "text-sidebar-primary font-semibold"
+                          : "text-sidebar-foreground/60 hover:bg-sidebar-accent hover:text-sidebar-foreground active:bg-sidebar-accent/80"
+                      )}
+                    >
+                      <span className="text-[10px] font-medium uppercase tracking-wider text-sidebar-foreground/40">
+                        {ed.year}
+                      </span>
+                      <span className="flex-1 truncate">{ed.title}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -262,12 +281,12 @@ export function Sidebar() {
 
       <nav className="flex-1 space-y-7 overflow-y-auto px-4 py-5">
         <div className="space-y-2">
-          <SectionLabel>Public Site</SectionLabel>
+          <SectionLabel>Admin</SectionLabel>
           <div className="space-y-0.5">
-            {PUBLIC_ITEMS.map((item) => {
+            {GLOBAL_ITEMS.map((item) => {
               const isActive =
                 pathname === item.href ||
-                (item.href !== "/" && pathname.startsWith(item.href));
+                (item.href !== "/admin" && pathname.startsWith(item.href));
               return (
                 <NavItem
                   key={item.href}
@@ -282,12 +301,12 @@ export function Sidebar() {
         </div>
 
         <div className="space-y-2">
-          <SectionLabel>Admin</SectionLabel>
+          <SectionLabel>Staff</SectionLabel>
           <div className="space-y-0.5">
-            {GLOBAL_ITEMS.map((item) => {
+            {STAFF_ITEMS.map((item) => {
               const isActive =
                 pathname === item.href ||
-                (item.href !== "/admin" && pathname.startsWith(item.href));
+                pathname.startsWith(item.href + "/");
               return (
                 <NavItem
                   key={item.href}
@@ -328,6 +347,8 @@ export function Sidebar() {
               duration-200
               hover:bg-sidebar-accent
               hover:text-sidebar-foreground
+              active:scale-[0.98]
+              active:bg-sidebar-accent/80
             "
           >
             <LogOut className="h-4 w-4 shrink-0" />

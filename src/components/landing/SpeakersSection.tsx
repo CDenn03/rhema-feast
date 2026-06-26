@@ -1,33 +1,28 @@
 const speakers = [
   {
-    name: 'Pastor John Smith',
-    role: 'Senior Pastor, Grace Cathedral',
-    topic: 'Unveiling His Glory',
+    name: 'Reverend Julian Kyula',
+    role: 'Visionary Host & Founder, Ruach Assembly',
+    origin: 'Nairobi, Kenya',
   },
   {
-    name: 'Dr. Sarah Johnson',
-    role: 'CEO, Kingdom Ventures',
-    topic: 'Kingdom Business Principles',
+    name: 'Apostle Joshua Selman',
+    role: 'Guest Apostolic Minister',
+    origin: 'Nigeria',
   },
   {
-    name: 'Minister David Mensah',
-    role: 'Worship Leader & Psalmist',
-    topic: 'The Sound of Heaven',
+    name: 'Pastor Nathaniel Bassey',
+    role: 'Worship Leader & Music Minister',
+    origin: 'Nigeria',
   },
   {
-    name: 'Prophetess Mary Osei',
-    role: 'Founder, Prayer City',
-    topic: 'Secrets of the Secret Place',
+    name: 'Bishop J.B. Masinde',
+    role: 'Fathers of the Faith Speaker Panel',
+    origin: 'Kenya',
   },
   {
-    name: 'Apostle Peter Adebayo',
-    role: 'President, Africa Harvest Mission',
-    topic: 'The Great Commission Now',
-  },
-  {
-    name: 'Dr. Esther Kim',
-    role: 'Director, Global Leadership Institute',
-    topic: 'Raising Kingdom Leaders',
+    name: 'Apostle William Kimani',
+    role: 'Fathers of the Faith Speaker Panel',
+    origin: 'Kenya',
   },
 ]
 
@@ -40,11 +35,10 @@ export function SpeakersSection() {
             Speakers
           </h2>
           <p className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Anointed Voices
+            Ministers &amp; Key Speakers
           </p>
           <p className="mt-4 text-base text-muted-foreground">
-            Hear from a diverse lineup of prophetic voices, marketplace leaders,
-            and worship ministers from across the globe.
+            Ministers and key speakers ministering at Rhema Feast 2026.
           </p>
         </div>
 
@@ -66,7 +60,7 @@ export function SpeakersSection() {
                 {speaker.role}
               </p>
               <div className="mt-4 rounded-lg bg-[var(--brand-gold)]/5 px-3 py-2 text-center text-xs font-medium text-[var(--brand-gold)]">
-                {speaker.topic}
+                {speaker.origin}
               </div>
             </div>
           ))}

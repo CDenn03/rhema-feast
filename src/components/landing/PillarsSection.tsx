@@ -1,29 +1,23 @@
-import { Cross, Briefcase, Music, Heart } from 'lucide-react'
+import { BookOpen, Music, Heart } from 'lucide-react'
 
 const pillars = [
   {
-    icon: Cross,
-    title: 'Faith & Spirituality',
+    icon: BookOpen,
+    title: 'Word',
     description:
-      'Deepen your relationship with God through powerful worship, prayer, and the uncompromised teaching of the Word.',
-  },
-  {
-    icon: Briefcase,
-    title: 'Business & Entrepreneurship',
-    description:
-      'Learn kingdom principles for marketplace success and discover how to build ventures that honor God.',
+      'Sharing the unadulterated word of God through vetted vessels hosted at Rhema. Built on a commitment to rich, accessible online and in-person biblical resource sharing.',
   },
   {
     icon: Music,
-    title: 'Worship & The Arts',
+    title: 'Worship',
     description:
-      'Experience the beauty of creative expression as a gateway to God\'s presence through music, dance, and drama.',
+      'Authentic worship is an integral layer of our general assembly. Hosting a myriad of dynamically experienced worshipers and global standard music ministers.',
   },
   {
     icon: Heart,
-    title: 'Community & Service',
+    title: 'Prayer',
     description:
-      'Connect with a global family of believers and participate in outreach that transforms lives and communities.',
+      'Admonished to pray without ceasing as the core alignment framework of the Kingdom. Highly esteeming prophetic intercession and consistent corporate prayer focus.',
   },
 ]
 
@@ -42,15 +36,14 @@ export function PillarsSection() {
             Our Pillars
           </h2>
           <p className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Four Core Foundations
+            The Rhema Feast Pillars
           </p>
           <p className="mt-4 text-base text-white/60">
-            Every aspect of Rhema Feast is built on these four pillars, creating
-            a holistic experience for spirit, soul, and body.
+            Every aspect of Rhema Feast is built on these three pillars.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {pillars.map((pillar) => {
             const Icon = pillar.icon
             return (

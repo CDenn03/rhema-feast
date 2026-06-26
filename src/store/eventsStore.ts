@@ -1,29 +1,47 @@
 import { create } from "zustand";
 
-interface SidebarEvent {
+interface SidebarSeries {
   id: string;
   title: string;
+  recurrence: string;
+}
+
+interface SidebarEdition {
+  id: string;
+  title: string;
+  seriesId: string;
+  year: string;
 }
 
 interface EventsState {
-  events: SidebarEvent[];
+  series: SidebarSeries[];
+  editions: SidebarEdition[];
   loaded: boolean;
   fetchEvents: () => Promise<void>;
   invalidate: () => void;
 }
 
 export const useEventsStore = create<EventsState>((set, get) => ({
-  events: [],
+  series: [],
+  editions: [],
   loaded: false,
   fetchEvents: async () => {
     if (get().loaded) return;
     try {
-      const res = await fetch("/api/internal/events");
-      const data = await res.json();
-      set({ events: data.data ?? [], loaded: true });
+      const [seriesRes, editionsRes] = await Promise.all([
+        fetch("/api/internal/events/series"),
+        fetch("/api/internal/events"),
+      ]);
+      const seriesData = await seriesRes.json();
+      const editionsData = await editionsRes.json();
+      set({
+        series: seriesData.data ?? [],
+        editions: editionsData.data ?? [],
+        loaded: true,
+      });
     } catch {
       set({ loaded: true });
     }
   },
-  invalidate: () => set({ loaded: false, events: [] }),
+  invalidate: () => set({ loaded: false, series: [], editions: [] }),
 }));

@@ -7,8 +7,10 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
-  { label: 'About', href: '#about' },
+  { label: 'Home', href: '#hero' },
+  { label: 'About Us', href: '#about' },
   { label: 'Pillars', href: '#pillars' },
+  { label: 'Business Forum', href: '#business-forum' },
   { label: 'Speakers', href: '#speakers' },
   { label: 'FAQ', href: '#faq' },
 ]
@@ -43,7 +45,7 @@ export function Header() {
             </a>
           ))}
           <Button render={<a href="#register" />} size="sm">
-            Register Now
+            Register Online
           </Button>
         </nav>
 
@@ -74,7 +76,7 @@ export function Header() {
             </a>
           ))}
           <Button render={<a href="#register" onClick={() => setOpen(false)} />} size="sm" className="mt-2">
-            Register Now
+            Register Online
           </Button>
         </nav>
       </div>

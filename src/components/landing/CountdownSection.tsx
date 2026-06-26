@@ -20,19 +20,22 @@ function calcTimeLeft() {
 }
 
 export function CountdownSection() {
-  const [time, setTime] = useState(calcTimeLeft)
+  const [time, setTime] = useState<ReturnType<typeof calcTimeLeft> | null>(null)
 
   useEffect(() => {
+    setTime(calcTimeLeft())
     const id = setInterval(() => setTime(calcTimeLeft()), 1000)
     return () => clearInterval(id)
   }, [])
 
-  const blocks = [
-    { label: 'Days', value: time.days },
-    { label: 'Hours', value: time.hours },
-    { label: 'Minutes', value: time.minutes },
-    { label: 'Seconds', value: time.seconds },
-  ]
+  const blocks = time
+    ? [
+        { label: 'Days', value: time.days },
+        { label: 'Hours', value: time.hours },
+        { label: 'Minutes', value: time.minutes },
+        { label: 'Seconds', value: time.seconds },
+      ]
+    : []
 
   return (
     <section className="relative py-20">
@@ -48,7 +51,7 @@ export function CountdownSection() {
         </p>
 
         <div className="mt-12 grid grid-cols-4 gap-3 sm:gap-6">
-          {blocks.map((block) => (
+          {time && blocks.map((block) => (
             <div
               key={block.label}
               className="rounded-2xl border border-white/10 bg-white/5 px-2 py-6 backdrop-blur-sm sm:py-8"
