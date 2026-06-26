@@ -214,7 +214,7 @@ async function PublicEventDetailPage({ params }: Props) {
 
           <Link
             href={`/events/${eventId}/register`}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent-gold px-6 py-3.5 text-base font-semibold text-white shadow-sm transition-all hover:bg-accent-gold/90 hover:shadow-md"
+            className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90"
           >
             Register for this Event
             <ArrowRight className="h-5 w-5" />
@@ -566,13 +566,13 @@ async function DashboardEventDetailPage({ params }: Props) {
           <SectionSurface>
             <h2 className="mb-4 text-xl font-bold tracking-tight">Quick Actions</h2>
             <div className="space-y-2">
-              <button className="w-full rounded-xl bg-primary py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
+              <button className="w-full cursor-pointer rounded-xl bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
                 Edit Event
               </button>
-              <button className="w-full rounded-xl border bg-card py-2.5 text-sm font-medium transition-colors hover:bg-muted">
+              <button className="w-full cursor-pointer rounded-xl border bg-card px-6 py-2.5 text-sm font-medium transition-colors hover:bg-muted">
                 View Public Page
               </button>
-              <button className="w-full rounded-xl border bg-card py-2.5 text-sm font-medium transition-colors hover:bg-muted">
+              <button className="w-full cursor-pointer rounded-xl border bg-card px-6 py-2.5 text-sm font-medium transition-colors hover:bg-muted">
                 Duplicate Event
               </button>
             </div>

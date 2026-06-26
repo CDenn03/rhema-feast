@@ -313,7 +313,7 @@ export default async function SubEventProfilePage({ params }: Props) {
                 </div>
                 <Link
                   href={`/events/${eventId}/register?sub=${subEventId}`}
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent-gold px-6 py-3.5 text-base font-semibold text-white shadow-sm transition-all hover:bg-accent-gold/90 hover:shadow-md"
+                  className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90"
                 >
                   <Ticket className="h-4 w-4" />
                   Buy Ticket
@@ -327,7 +327,7 @@ export default async function SubEventProfilePage({ params }: Props) {
                 </div>
                 <Link
                   href={`/events/${eventId}/register?sub=${subEventId}`}
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent-gold px-6 py-3.5 text-base font-semibold text-white shadow-sm transition-all hover:bg-accent-gold/90 hover:shadow-md"
+                  className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90"
                 >
                   <Ticket className="h-4 w-4" />
                   Get Free Ticket
@@ -341,7 +341,7 @@ export default async function SubEventProfilePage({ params }: Props) {
                 </div>
                 <Link
                   href={`/events/${eventId}/register`}
-                  className="flex w-full items-center justify-center gap-2 rounded-xl border bg-card px-6 py-3.5 text-base font-semibold transition-all hover:bg-muted"
+                  className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border bg-card px-6 py-2.5 text-sm font-medium transition-colors hover:bg-muted"
                 >
                   Register Interest
                 </Link>

@@ -73,7 +73,7 @@ export function EditionCard({ edition }: Props) {
         </div>
         <Link
           href={`/events/${edition.id}`}
-          className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-accent-gold px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90"
+          className="mt-2 flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90"
         >
           Manage
           <ArrowRight className="h-4 w-4" />

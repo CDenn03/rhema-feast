@@ -20,9 +20,9 @@ function formatTime(d: string) {
   });
 }
 
-export default async function GuestConfirmPage(props: {
+export default async function GuestConfirmPage(props: Readonly<{
   params: Promise<{ token: string }>;
-}) {
+}>) {
   const { token } = await props.params;
   const invite = await getGuestInviteByToken(token);
 
@@ -114,13 +114,13 @@ export default async function GuestConfirmPage(props: {
         <div className="space-y-3">
           <Link
             href={`/guest/confirm/${token}/accept`}
-            className="block w-full rounded-xl bg-accent-gold px-6 py-3.5 text-center text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90"
+            className="block w-full cursor-pointer rounded-xl bg-accent-gold px-6 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90"
           >
             Accept Invitation
           </Link>
           <Link
             href={`/guest/confirm/${token}/decline`}
-            className="block w-full rounded-xl border bg-card px-6 py-3 text-center text-sm font-medium text-muted-foreground transition-colors hover:bg-muted"
+            className="block w-full cursor-pointer rounded-xl border bg-card px-6 py-2.5 text-center text-sm font-medium transition-colors hover:bg-muted"
           >
             Decline
           </Link>

@@ -202,13 +202,13 @@ export function RsvpClient({ token, invite, event }: Props) {
               <>
                 <button
                   onClick={() => setResponse("accept")}
-                  className="rounded-xl bg-accent-gold px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-gold/90"
+                  className="cursor-pointer rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90"
                 >
                   Accept Invitation
                 </button>
                 <button
                   onClick={() => setResponse("decline")}
-                  className="rounded-xl border bg-card px-6 py-3 text-sm font-medium transition-colors hover:bg-muted"
+                  className="cursor-pointer rounded-xl border bg-card px-6 py-2.5 text-sm font-medium transition-colors hover:bg-muted"
                 >
                   Decline
                 </button>
@@ -222,14 +222,14 @@ export function RsvpClient({ token, invite, event }: Props) {
                 <div className="flex gap-3">
                   <button
                     onClick={() => setResponse(null)}
-                    className="flex-1 rounded-xl border bg-card px-6 py-3 text-sm font-medium transition-colors hover:bg-muted"
+                    className="flex-1 cursor-pointer rounded-xl border bg-card px-6 py-2.5 text-sm font-medium transition-colors hover:bg-muted"
                   >
                     Back
                   </button>
                   <button
                     onClick={handleSubmit}
                     disabled={submitting}
-                    className="flex-1 rounded-xl bg-accent-gold px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-gold/90 disabled:opacity-50"
+                    className="flex-1 cursor-pointer rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90 disabled:opacity-50"
                   >
                     {submitting ? "Submitting..." : "Confirm"}
                   </button>

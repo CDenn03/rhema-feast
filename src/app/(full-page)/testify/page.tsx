@@ -54,84 +54,102 @@ export default function PublicTestimonialsPage() {
   };
 
   return (
-    <main className="container mx-auto py-16 px-4">
+    <main className="container mx-auto px-4 py-10 sm:py-16">
       <div className="mx-auto max-w-2xl">
         <Link
           href="/#register"
-          className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          className="mb-5 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground sm:mb-6"
         >
           <ArrowLeft className="h-4 w-4" /> Back
         </Link>
 
-        <Card>
-          <CardHeader>
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-gold/10">
+        <Card className="overflow-hidden">
+          <CardHeader className="border-b bg-gradient-to-br from-accent-gold/10 via-transparent to-transparent px-4 py-5 sm:px-6 sm:py-6">
+            <div className="flex items-start gap-3 sm:items-center">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent-gold/10 ring-1 ring-accent-gold/20">
                 <Star className="h-5 w-5 text-accent-gold" />
               </div>
-              <div>
-                <CardTitle>Share Your Testimony</CardTitle>
-                <CardDescription>
+              <div className="min-w-0">
+                <CardTitle className="text-xl sm:text-2xl">Share Your Testimony</CardTitle>
+                <CardDescription className="mt-0.5 text-sm">
                   Tell us how Rhema Feast has impacted your life.
                 </CardDescription>
               </div>
             </div>
           </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div className="space-y-2">
-                  <Label htmlFor="fullName">Full Name *</Label>
-                  <Input id="fullName" placeholder="Your full name" {...register("fullName")} />
-                  {errors.fullName && <p className="text-sm text-destructive">{errors.fullName.message}</p>}
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email *</Label>
-                  <Input id="email" type="email" placeholder="you@example.com" {...register("email")} />
-                  {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
-                </div>
-              </div>
 
-              <div className="space-y-2">
-                <Label>Which events did you attend? *</Label>
+          <CardContent className="px-4 py-6 sm:px-6 sm:py-8">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+              <section className="space-y-4">
+                <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  Your details
+                </h3>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-1.5">
+                    <Label htmlFor="fullName">Full Name *</Label>
+                    <Input id="fullName" placeholder="Your full name" {...register("fullName")} />
+                    {errors.fullName && (
+                      <p className="text-sm text-destructive">{errors.fullName.message}</p>
+                    )}
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="email">Email *</Label>
+                    <Input id="email" type="email" placeholder="you@example.com" {...register("email")} />
+                    {errors.email && (
+                      <p className="text-sm text-destructive">{errors.email.message}</p>
+                    )}
+                  </div>
+                </div>
+              </section>
+
+              <section className="space-y-3">
+                <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  Which events did you attend? *
+                </h3>
                 <div className="grid gap-2 sm:grid-cols-2">
-                  {MOCK_EDITIONS.filter((e) => e.status !== "DRAFT").map((event) => (
-                    <label
-                      key={event.id}
-                      className={`flex cursor-pointer items-start gap-3 rounded-lg border p-3 transition-colors ${
-                        selectedEvents.includes(event.id)
-                          ? "border-accent-gold bg-accent-gold/5"
-                          : "border-border hover:bg-muted/50"
-                      }`}
-                    >
-                      <Checkbox
-                        checked={selectedEvents.includes(event.id)}
-                        onChange={() => toggleEvent(event.id)}
-                        className="mt-0.5"
-                      />
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium leading-snug">{event.title}</p>
-                        <p className="text-xs text-muted-foreground mt-0.5">{event.year}</p>
-                      </div>
-                      {selectedEvents.includes(event.id) && (
-                        <Check className="h-4 w-4 shrink-0 text-accent-gold mt-0.5" />
-                      )}
-                    </label>
-                  ))}
+                  {MOCK_EDITIONS.filter((e) => e.status !== "DRAFT").map((event) => {
+                    const checked = selectedEvents.includes(event.id);
+                    return (
+                      <label
+                        key={event.id}
+                        className={`flex cursor-pointer items-start gap-3 rounded-lg border p-3 transition-colors ${
+                          checked
+                            ? "border-accent-gold bg-accent-gold/5"
+                            : "border-border hover:bg-muted/50"
+                        }`}
+                      >
+                        <Checkbox
+                          checked={checked}
+                          onChange={() => toggleEvent(event.id)}
+                          className="mt-0.5 shrink-0"
+                        />
+                        <div className="min-w-0 flex-1">
+                          <p className="text-sm font-medium leading-snug">{event.title}</p>
+                          <p className="mt-0.5 text-xs text-muted-foreground">{event.year}</p>
+                        </div>
+                        {checked && <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent-gold" />}
+                      </label>
+                    );
+                  })}
                 </div>
-                {errors.eventIds && <p className="text-sm text-destructive">{errors.eventIds.message}</p>}
-              </div>
+                {errors.eventIds && (
+                  <p className="text-sm text-destructive">{errors.eventIds.message}</p>
+                )}
+              </section>
 
-              <div className="space-y-2">
+              <section className="space-y-1.5">
                 <Label htmlFor="testimony">Your Testimony *</Label>
                 <Textarea
                   id="testimony"
                   rows={5}
+                  className="min-h-[140px]"
                   placeholder="Share how Rhema Feast impacted you — what God did, what you learned, how your life changed..."
                   {...register("testimony")}
                 />
-                {errors.testimony && <p className="text-sm text-destructive">{errors.testimony.message}</p>}
-              </div>
+                {errors.testimony && (
+                  <p className="text-sm text-destructive">{errors.testimony.message}</p>
+                )}
+              </section>
 
               <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? "Submitting…" : "Share Testimony"}

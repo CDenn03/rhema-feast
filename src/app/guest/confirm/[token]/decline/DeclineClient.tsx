@@ -77,7 +77,7 @@ export function DeclineClient({ token, eventTitle, name, title }: Props) {
           <button
             onClick={handleSubmit}
             disabled={step === "submitting"}
-            className="w-full rounded-xl border bg-card px-6 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted disabled:opacity-50"
+            className="w-full cursor-pointer rounded-xl border bg-card px-6 py-2.5 text-sm font-medium transition-colors hover:bg-muted disabled:opacity-50"
           >
             {step === "submitting" ? "Confirming..." : "Yes, I Can't Attend"}
           </button>

@@ -52,14 +52,14 @@ export function GuestsPageClient({ eventId, eventName, invites, categories, gues
           <div className="flex gap-3">
             <button
               onClick={() => setShowCreate(true)}
-              className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+              className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
             >
               <UserPlus className="h-4 w-4" />
               New Invite
             </button>
             <button
               onClick={() => setShowCategories(true)}
-              className="inline-flex items-center gap-2 rounded-xl border bg-card px-4 py-2.5 text-sm font-medium transition-colors hover:bg-muted"
+              className="inline-flex cursor-pointer items-center gap-2 rounded-xl border bg-card px-6 py-2.5 text-sm font-medium transition-colors hover:bg-muted"
             >
               <Tags className="h-4 w-4" />
               Categories

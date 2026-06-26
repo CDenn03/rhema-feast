@@ -52,7 +52,7 @@ function QrBlock({ label, payload }: { label: string; payload: string }) {
       <button
         onClick={handleDownload}
         disabled={!svg || downloading}
-        className="w-full rounded-xl border bg-card py-2 text-xs font-medium transition-colors hover:bg-muted disabled:opacity-50"
+        className="w-full cursor-pointer rounded-xl border bg-card px-3 py-1.5 text-xs font-medium transition-colors hover:bg-muted disabled:opacity-50"
       >
         {downloading ? "Downloading..." : "Download QR"}
       </button>

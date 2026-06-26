@@ -79,7 +79,7 @@ export function EventCard({ event, showRegister }: Props) {
         {showRegister && (
           <Link
             href={`/events/${event.id}/register`}
-            className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-accent-gold px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90"
+            className="mt-2 flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90"
           >
             Register
             <ArrowRight className="h-4 w-4" />

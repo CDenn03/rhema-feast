@@ -135,7 +135,7 @@ export function AcceptClient({ token, invite, event }: Props) {
                       return next.slice(0, i);
                     });
                   }}
-                  className={`flex-1 rounded-xl border px-3 py-2 text-sm font-medium transition-colors ${
+                  className={`flex-1 cursor-pointer rounded-xl border px-4 py-2.5 text-sm font-medium transition-colors ${
                     companionCount === i
                       ? "border-accent-gold bg-accent-gold/10 text-accent-gold"
                       : "bg-card text-muted-foreground hover:bg-muted"
@@ -174,7 +174,7 @@ export function AcceptClient({ token, invite, event }: Props) {
             <button
               onClick={handleSubmit}
               disabled={step === "submitting"}
-              className="w-full rounded-xl bg-accent-gold px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90 disabled:opacity-50"
+              className="w-full cursor-pointer rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90 disabled:opacity-50"
             >
               {step === "submitting" ? "Confirming..." : "Yes, I'll Be There"}
             </button>

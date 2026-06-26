@@ -116,22 +116,22 @@ export function ViewInviteDialog({ invite, open, onOpenChange }: Props) {
 
         <DialogFooter>
           {invite.status === "pending" && (
-            <button className="rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-gold/90">
+            <button className="cursor-pointer rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90">
               Resend Invitation
             </button>
           )}
           {invite.status === "confirmed" && (
-            <button className="rounded-xl border bg-card px-6 py-2.5 text-sm font-medium transition-colors hover:bg-muted">
+            <button className="cursor-pointer rounded-xl border bg-card px-6 py-2.5 text-sm font-medium transition-colors hover:bg-muted">
               Edit Details
             </button>
           )}
           {invite.status === "declined" && (
-            <button className="rounded-xl bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
+            <button className="cursor-pointer rounded-xl bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
               Re-issue Invite
             </button>
           )}
           {invite.status === "expired" && (
-            <button className="rounded-xl bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
+            <button className="cursor-pointer rounded-xl bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
               Re-issue Invite
             </button>
           )}

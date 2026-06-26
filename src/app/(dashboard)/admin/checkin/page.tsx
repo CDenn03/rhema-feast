@@ -248,7 +248,7 @@ export default function AdminCheckInPage() {
         actions={
           <button
             onClick={() => setShowScanner(!showScanner)}
-            className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             <Camera className="h-4 w-4" />
             {showScanner ? "Close Scanner" : "Scan QR"}
@@ -380,7 +380,7 @@ export default function AdminCheckInPage() {
             ) : (
               <button
                 onClick={() => setConfirmPerson(scannedResult)}
-                className="rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-gold/90 cursor-pointer"
+                className="cursor-pointer rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90"
               >
                 Check In Now
               </button>
@@ -485,7 +485,7 @@ export default function AdminCheckInPage() {
             </button>
             <button
               onClick={() => { if (confirmPerson) handleCheckIn(confirmPerson); setConfirmPerson(null); }}
-              className="rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-gold/90"
+              className="cursor-pointer rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90"
             >
               Confirm Check-In
             </button>

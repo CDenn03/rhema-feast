@@ -103,7 +103,7 @@ export default function SpeakersPage() {
           </p>
           <a
             href="/#register"
-            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-[var(--brand-gold)] px-8 py-3 text-sm font-semibold text-[var(--brand-dark)] transition-colors hover:bg-[var(--brand-gold)]/90"
+              className="mt-8 inline-flex cursor-pointer items-center gap-2 rounded-xl bg-[var(--brand-gold)] px-6 py-2.5 text-sm font-semibold text-[var(--brand-dark)] transition-colors hover:bg-[var(--brand-gold)]/90"
           >
             Register Free Today
           </a>

@@ -192,7 +192,7 @@ export default function EventCheckInPage() {
         actions={
           <button
             onClick={() => setShowScanner(!showScanner)}
-            className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             <Camera className="h-4 w-4" />
             {showScanner ? "Close Scanner" : "Scan QR"}
@@ -223,7 +223,7 @@ export default function EventCheckInPage() {
               <button
                 onClick={handleManualPayload}
                 disabled={!manualPayload}
-                className="rounded-xl bg-accent-gold px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-gold/90 disabled:opacity-50"
+                className="cursor-pointer rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90 disabled:opacity-50"
               >
                 Look Up
               </button>
@@ -256,7 +256,7 @@ export default function EventCheckInPage() {
             ) : (
               <button
                 onClick={() => setConfirmPerson(scannedResult)}
-                className="rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-gold/90 cursor-pointer"
+                className="cursor-pointer rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90"
               >
                 Check In Now
               </button>
@@ -340,7 +340,7 @@ export default function EventCheckInPage() {
                       ) : !checked ? (
                         <button
                           onClick={() => setConfirmPerson(person)}
-                          className="rounded-xl bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90 cursor-pointer"
+                          className="cursor-pointer rounded-xl bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                         >
                           Check In
                         </button>
@@ -390,7 +390,7 @@ export default function EventCheckInPage() {
                     </div>
                     <button
                       onClick={() => undoCheckIn(entry.id)}
-                      className="rounded-xl border border-border bg-card p-2 text-muted-foreground transition-colors hover:bg-muted"
+                      className="cursor-pointer rounded-xl border border-border bg-card p-2 text-muted-foreground transition-colors hover:bg-muted"
                       title="Undo check-in"
                     >
                       <Undo2 className="h-4 w-4" />
@@ -433,13 +433,13 @@ export default function EventCheckInPage() {
           <DialogFooter>
             <button
               onClick={() => setConfirmPerson(null)}
-              className="rounded-xl border bg-card px-6 py-2.5 text-sm font-medium transition-colors hover:bg-muted"
+              className="cursor-pointer rounded-xl border bg-card px-6 py-2.5 text-sm font-medium transition-colors hover:bg-muted"
             >
               Cancel
             </button>
             <button
               onClick={() => { if (confirmPerson) handleCheckIn(confirmPerson); setConfirmPerson(null); }}
-              className="rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-gold/90"
+              className="cursor-pointer rounded-xl bg-accent-gold px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-gold/90"
             >
               Confirm Check-In
             </button>
